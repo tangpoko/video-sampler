@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Live Player</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%23ff4fd8'/%3E%3Cpath d='M6 4.6v6.8L11.4 8z' fill='%231b0418'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Michroma&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/live.css">
+</head>
+<body>
+<!-- The live player as a tape deck: deck A's effects on the left, deck B's on the right, the
+     mixed picture in the middle with each deck's monitor and the mixer under it. main.js fills
+     the effect columns, the monitors' controls, the mixer and the music strip. -->
+<div id="live" class="live">
+  <header class="top panel">
+    <div class="brand">
+      <span class="stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="nm"><b>VIDEO SAMPLER</b><small>LIVE DECK</small></span>
+    </div>
+    <a class="key small" href="/" id="back" title="Back to the editor">Editor</a>
+    <div class="music-wrap" id="music"></div>
+    <button class="key" id="alloff" type="button" title="Turn every effect off on both decks (Backspace)">All off</button>
+    <button class="key icon" id="full" type="button" title="Full screen (Enter)" aria-label="Full screen">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg>
+    </button>
+  </header>
+
+  <section class="col col-a panel" id="colA" aria-label="Deck A effects"></section>
+
+  <div class="centre">
+    <section class="stagewrap panel">
+      <div class="stage" id="stage">
+        <canvas id="canvas"></canvas>
+        <div class="stage-empty" id="empty">No video yet. Press Load on a deck, or drop a video here.</div>
+      </div>
+      <span class="bezel l">Video out <em>A+B</em> mix</span>
+      <span class="bezel r">Space plays both decks</span>
+    </section>
+
+    <div class="lower">
+      <section class="mon mon-a panel" id="monA" aria-label="Deck A monitor">
+        <video id="video" playsinline preload="auto" crossorigin="anonymous"></video>
+      </section>
+      <section class="mixer panel" id="mixer" aria-label="Mixer"></section>
+      <section class="mon mon-b panel" id="monB" aria-label="Deck B monitor">
+        <video id="videoB" playsinline preload="auto" crossorigin="anonymous" muted></video>
+      </section>
+    </div>
+  </div>
+
+  <section class="col col-b panel" id="colB" aria-label="Deck B effects"></section>
+</div>
+
+<!-- The video picker. It opens over everything and always loads into one deck. -->
+<div class="picker-modal is-hidden" id="overlay" role="dialog" aria-modal="true" aria-label="Pick a video"></div>
+
+<!-- Shown while a file is dragged over the window. The half it is dropped on picks the deck. -->
+<div class="drop-hint" id="drop" aria-hidden="true">
+  <div class="drop-half" data-deck="0">Drop to load on deck A</div>
+  <div class="drop-half" data-deck="1">Drop to load on deck B</div>
+</div>
+
+<input type="file" id="file" accept="video/*,.mkv" hidden>
+<div id="toasts" class="toasts"></div>
+<script type="module" src="js/live/main.js"></script>
+</body>
+</html>

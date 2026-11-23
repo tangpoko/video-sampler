@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Video Sampler</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%23f0a33c'/%3E%3Cpath d='M6 4.6v6.8L11.4 8z' fill='%231b1204'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app" data-view="loading">
+  <main id="start" class="start" aria-label="Projects"></main>
+
+  <div class="editor">
+    <header id="topbar" class="topbar"></header>
+    <section id="player" class="player" aria-label="Preview"></section>
+    <section id="timeline" class="timeline" aria-label="Timeline"></section>
+    <aside class="side">
+      <section id="crate" class="crate" aria-label="Crate"></section>
+      <section id="inspector" class="inspector" aria-label="Inspector"></section>
+    </aside>
+  </div>
+
+  <div class="boot" aria-hidden="true">
+    <div class="spinner lg"></div>
+    <div class="boot-text">Opening project</div>
+  </div>
+</div>
+<div id="toasts" class="toasts"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

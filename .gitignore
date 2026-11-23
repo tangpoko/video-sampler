@@ -1,0 +1,33 @@
+# Track source and docs only. Films, songs, analysis libraries, edits and renders stay local.
+/*
+!/.gitignore
+!/README.md
+!/engine/
+!/app/
+!/docs/
+
+# Inside tracked folders
+engine/.venv/
+__pycache__/
+*.pyc
+app/dev/fixtures/
+
+# Media, models, archives, secrets
+*.mp4
+*.mkv
+*.mov
+*.webm
+*.avi
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.jpg
+*.png
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.zip
+.env*
